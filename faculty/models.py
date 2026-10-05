@@ -41,6 +41,10 @@ class Department(models.Model):
         "Завідувач кафедри",
         max_length=255
     )
+    # programs = models.JSONField(
+    #     "Список спеціальностей",
+    #     default=list
+    # )
 
 class Program(models.Model):
     code = models.IntegerField(

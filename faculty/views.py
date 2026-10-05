@@ -26,8 +26,10 @@ def departments(request):
         "departments": departments
     })
 
-def department_detail(request, id):
+def department_details(request, id):
     department = get_object_or_404(models.Department.objects.prefetch_related("programs", "lecturers"), pk=id)
     return render(request, "faculty/department_details.html", {
-        "department": department
+        "department": department,
+        "programs": department.programs.all(),
+        "lecturers": department.lecturers.all()
     })

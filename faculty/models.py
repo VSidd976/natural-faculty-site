@@ -32,6 +32,9 @@ class MainPageInfo(models.Model):
         default="Пн–Пт: 09:00 – 17:00"
     )
 
+    def __str__(self):
+        return self.faculty_name
+
 class Department(models.Model):
     name = models.CharField(
         "Назва кафедри",
@@ -41,10 +44,9 @@ class Department(models.Model):
         "Завідувач кафедри",
         max_length=255
     )
-    # programs = models.JSONField(
-    #     "Список спеціальностей",
-    #     default=list
-    # )
+
+    def __str__(self):
+        return self.name
 
 class Program(models.Model):
     code = models.IntegerField(
@@ -75,6 +77,9 @@ class Program(models.Model):
         default=list
     )
 
+    def __str__(self):
+        return self.name
+
 class Lecturer(models.Model):
     name = models.CharField(
         "Ім'я викладача",
@@ -93,3 +98,6 @@ class Lecturer(models.Model):
         on_delete=models.CASCADE,
         related_name="lecturers"
     )
+
+    def __str__(self):
+        return self.name

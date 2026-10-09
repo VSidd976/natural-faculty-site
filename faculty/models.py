@@ -101,3 +101,26 @@ class Lecturer(models.Model):
 
     def __str__(self):
         return self.name
+
+class ExchangeProgram(models.Model):
+    university = models.CharField(
+        "Університет",
+        max_length=255
+    )
+    languages = models.CharField(
+        "Мови навчання",
+        max_length=255
+    )
+    places = models.CharField(
+        "Кількість вільних місць",
+        max_length=20
+    )
+    deadline = models.DateField(
+        "Реченець подання"
+    )
+    description = models.TextField(
+        "Опис програми"
+    )
+
+    def __str__(self):
+        return self.university

@@ -34,6 +34,11 @@ class Migration(migrations.Migration):
             field=models.PositiveIntegerField(default=1, verbose_name='Кількість місць'),
             preserve_default=False,
         ),
+        migrations.AlterField(
+            model_name='exchangeprogram',
+            name='places',
+            field=models.CharField(max_length=20, null=True, verbose_name='Кількість вільних місць'),
+        ),
         migrations.RunPython(
             convert_places_to_int,
             reverse_code=reverse_convert_places_to_int

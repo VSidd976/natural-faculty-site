@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 
@@ -103,17 +104,20 @@ class Lecturer(models.Model):
         return self.name
 
 class ExchangeProgram(models.Model):
-    university = models.CharField(
-        "Університет",
+    university_name = models.CharField(
+        "Назва університету",
+        max_length=255
+    )
+    country = models.CharField(
+        "Країна",
         max_length=255
     )
     languages = models.CharField(
         "Мови навчання",
         max_length=255
     )
-    places = models.CharField(
-        "Кількість вільних місць",
-        max_length=20
+    available_places = models.PositiveIntegerField(
+        "Кількість вільних місць"
     )
     deadline = models.DateField(
         "Реченець подання"
@@ -122,5 +126,9 @@ class ExchangeProgram(models.Model):
         "Опис програми"
     )
 
+    @property
+    def is_active(self):
+        return self.deadline >= timezone.now().date()
+
     def __str__(self):
-        return self.university
+        return f"{self.university_name} ({self.country})"

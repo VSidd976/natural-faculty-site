@@ -33,3 +33,9 @@ def department_details(request, id):
         "programs": department.programs.all(),
         "lecturers": department.lecturers.all()
     })
+
+def exchange_programs(request):
+    exchange_programs = models.ExchangeProgram.objects.all().order_by("deadline")
+    return render(request, "faculty/exchange_programs.html", {
+        "exchange_programs": exchange_programs
+    })

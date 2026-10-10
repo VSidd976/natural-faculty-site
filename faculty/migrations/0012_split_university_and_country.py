@@ -54,6 +54,11 @@ class Migration(migrations.Migration):
             field=models.CharField(default='', max_length=100, verbose_name='Країна'),
             preserve_default=False,
         ),
+        migrations.AlterField(
+            model_name='exchangeprogram',
+            name='university',
+            field=models.CharField(max_length=255, null=True, verbose_name='Університет'),
+        ),
         migrations.RunPython(
             split_university_data,
             reverse_code=reverse_split_university_data

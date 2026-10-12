@@ -18,14 +18,12 @@
                     <small class="text-muted text-end">{{ program.department.name }}</small>
                 </div>
 
-                <!-- Натискання на назву спеціальності перенаправляє на її сторінку -->
                 <h3 class="card-title h4 mb-3">
                     <a href="{% url 'faculty:program_details' program.id %}" class="text-decoration-none text-dark fw-bold">
                         {{ program.name }}
                     </a>
                 </h3>
 
-                <!-- Перші 50 слів опису згідно з ТЗ -->
                 <p class="card-text text-secondary mb-4 flex-grow-1">
                     {{ program.description|truncatewords:50 }}
                 </p>

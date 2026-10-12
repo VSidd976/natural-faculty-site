@@ -1,8 +1,6 @@
 from django.db import models
 from django.utils import timezone
 
-# Create your models here.
-
 class MainPageInfo(models.Model):
     faculty_name = models.CharField(
         "Назва факультету",

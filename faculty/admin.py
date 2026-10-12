@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from faculty import models
 
 admin.site.register(models.Department)

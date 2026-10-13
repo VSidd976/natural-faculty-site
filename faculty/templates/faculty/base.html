@@ -35,7 +35,7 @@
                  href="{% url 'faculty:departments' %}">Кафедри</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {% if 'program' in request.resolver_match.url_name %}active text-gold{% endif %}"
+              <a class="nav-link {% if request.resolver_match.url_name == 'programs' or request.resolver_match.url_name == 'program_details' %}active text-gold{% endif %}"
                  href="{% url 'faculty:programs' %}">Спеціальності</a>
             </li>
             <li class="nav-item">

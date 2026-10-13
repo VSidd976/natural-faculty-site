@@ -21,6 +21,10 @@ class MainPageInfo(models.Model):
         "Графік роботи", max_length=255, default="Пн–Пт: 09:00 – 17:00"
     )
 
+    class Meta:
+        verbose_name = "Інформація головної сторінки"
+        verbose_name_plural = "Інформація головної сторінки"
+
     def __str__(self):
         return self.faculty_name
 
@@ -28,6 +32,11 @@ class MainPageInfo(models.Model):
 class Department(models.Model):
     name = models.CharField("Назва кафедри", max_length=255)
     head = models.CharField("Завідувач кафедри", max_length=255)
+
+    class Meta:
+        verbose_name = "Кафедра"
+        verbose_name_plural = "Кафедри"
+        ordering = ["name"]
 
     def __str__(self):
         return self.name
@@ -46,6 +55,11 @@ class Program(models.Model):
     )
     disciplines = models.JSONField("Список дисциплін", default=list)
 
+    class Meta:
+        verbose_name = "Спеціальність"
+        verbose_name_plural = "Спеціальності"
+        ordering = ["code"]
+
     def __str__(self):
         return self.name
 
@@ -58,6 +72,11 @@ class Lecturer(models.Model):
         Department, on_delete=models.CASCADE, related_name="lecturers"
     )
 
+    class Meta:
+        verbose_name = "Викладач"
+        verbose_name_plural = "Викладачі"
+        ordering = ["name"]
+
     def __str__(self):
         return self.name
 
@@ -69,6 +88,11 @@ class ExchangeProgram(models.Model):
     available_places = models.PositiveIntegerField("Кількість вільних місць")
     deadline = models.DateField("Реченець подання")
     description = models.TextField("Опис програми")
+
+    class Meta:
+        verbose_name = "Програма обміну"
+        verbose_name_plural = "Програми обміну"
+        ordering = ["deadline"]
 
     def __str__(self):
         return f"{self.university_name} ({self.country})"
